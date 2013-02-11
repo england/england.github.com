@@ -1,4 +1,7 @@
 england.github.com
 ==================
 
-blog
+◑ ◔
+╔═╗ IMMA FIRIN MAH LAZOR!
+║▓▒░░░░░░░░░░░░░░░░░
+╚═╝
