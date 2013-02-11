@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<article class="post">
+  <div class="content">
+    <div class="title">
+      <div class="date">{{page.date | date_to_string}}<br />—</div>
+      <h1><a href="{{post.url}}">{{page.title}}</a></h1>
+    </div>
+    <div id="body">
+      {{ content }}
+    </div>
+    <div id="meta">
+      <div id="info">
+        <span>
+          {% for tag in page.tags %}
+            <a href="/tag/{{tag}}.html">{{tag}}</a>
+          {% endfor %}
+        </span>
+      </div>
+    </div>
+  </div>
+</article>

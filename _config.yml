@@ -1,0 +1,29 @@
+permalink: /:title.html
+
+plugins:     ./_plugins
+
+
+# Disables custom plugins.
+# safe: true
+
+# Enables or disables Jekyll from recreating the site when files are modified.
+auto: true
+
+
+# Publishes posts with a future date
+future: false
+
+# Splits your posts up over multiple subdirectories called “page2”, “page3”, … “pageN”
+paginate: 1
+
+pygments: true
+markdown: redcarpet
+
+title: takidashi
+description: "Every event is inevitable - if it wasn't, it wouldn't happen"
+author: england
+twitter: https://twitter.com/englandpost
+
+tag_page_layout: tag_page
+tag_page_dir: tag
+

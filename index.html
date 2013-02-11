@@ -1,0 +1,30 @@
+---
+layout: default
+title: huehue
+---
+
+{% for post in site.posts limit:10 offset:0 %}
+  <article class="index">
+    <div class="content">
+      <div class="title">
+        <div class="date">{{post.date | date_to_string}}<br />—</div>
+        <h1><a href="{{post.url}}">{{post.title}}</a></h1>
+      </div>
+      <div id="body">
+        {{ post.content | split:'<!--break-->' | first }}
+        {% if post.content contains '<!--break-->' %}
+          <a href="{{ post.url }}">read more</a>
+        {% endif %}
+      </div>
+      <div id="meta">
+        <div id="info">
+          <span>
+            {% for tag in post.tags %}
+              <a href="/tag/{{tag}}.html">{{tag}}</a>
+            {% endfor %}
+          </span>
+        </div>
+      </div>
+    </div>
+  </article>
+{% endfor %}
