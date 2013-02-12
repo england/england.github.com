@@ -518,16 +518,16 @@ a:hover {
 
 /* Post Meta */
 
-#wrapper section article div.content #meta {
+#wrapper section article div.content .meta {
   margin-top: 40px;
 }
 
-#wrapper section article div.content #meta div {
+#wrapper section article div.content .meta div {
   font-size: 14px;
   color: #cdcdcd;
 }
 
-#wrapper section article div.content #meta div a {
+#wrapper section article div.content .meta div a {
   color: #cdcdcd;
   border: none;
   padding: 0;
@@ -537,23 +537,23 @@ a:hover {
   -o-transition: color 0.15s cubic-bezier(0.54, 0.24, 0.35, 0.68);
 }
 
-#wrapper section article div.content #meta div a:hover {
+#wrapper section article div.content .meta div a:hover {
   color: #030303;
   -webkit-transition: color 0.15s cubic-bezier(0.54, 0.24, 0.35, 0.68);
   -moz-transition: color 0.15s cubic-bezier(0.54, 0.24, 0.35, 0.68);
   -o-transition: color 0.15s cubic-bezier(0.54, 0.24, 0.35, 0.68);
 }
 
-#wrapper section article div.content #meta div#info {
+#wrapper section article div.content .meta div.info {
   margin-bottom: 15px;
   text-align: center;
 }
 
-#wrapper section article div.content #meta div#info a {
+#wrapper section article div.content .meta div.info a {
   text-transform: lowercase;
 }
 
-#wrapper section article div.content #meta #social {
+#wrapper section article div.content .meta #social {
   opacity: 0.5;
   display: block;
   width: 166px;
@@ -564,33 +564,33 @@ a:hover {
   -o-transition: opacity 0.15s cubic-bezier(0.54, 0.24, 0.35, 0.68);
 }
 
-#wrapper section article div.content #meta #social > * {
+#wrapper section article div.content .meta #social > * {
   float: left;
   overflow: hidden;
 }
 
-#wrapper section article div.content #meta #social > *:hover {
+#wrapper section article div.content .meta #social > *:hover {
   cursor: pointer;
 }
 
-#wrapper section article div.content #meta #social div.fb-like {
+#wrapper section article div.content .meta #social div.fb-like {
   width: 48px;
   margin-left: 15px;
   margin-right: 15px;
 }
 
-#wrapper section article div.content #meta #social div.fb-like span {
+#wrapper section article div.content .meta #social div.fb-like span {
   width: 48px !important;
 }
 
-#wrapper section article div.content #meta #social:hover {
+#wrapper section article div.content .meta #social:hover {
   opacity: 1.0;
   -webkit-transition: opacity 0.15s cubic-bezier(0.54, 0.24, 0.35, 0.68);
   -moz-transition: opacity 0.15s cubic-bezier(0.54, 0.24, 0.35, 0.68);
   -o-transition: opacity 0.15s cubic-bezier(0.54, 0.24, 0.35, 0.68);
 }
 
-#wrapper section article div.content #meta #social div#___plusone_0 {
+#wrapper section article div.content .meta #social div#___plusone_0 {
   width: 32px;
 }
 

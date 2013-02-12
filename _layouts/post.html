@@ -8,11 +8,11 @@ layout: default
       <div class="date">{{page.date | date_to_string}}<br />—</div>
       <h1><a href="{{post.url}}">{{page.title}}</a></h1>
     </div>
-    <div id="body">
+    <div class="body">
       {{ content }}
     </div>
-    <div id="meta">
-      <div id="info">
+    <div class="meta">
+      <div class="info">
         <span>
           {% for tag in page.tags %}
             {{tag}}
