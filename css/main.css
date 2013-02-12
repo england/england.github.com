@@ -324,33 +324,33 @@ a:hover {
 
 /* Body Content */
 
-#wrapper section article div.content #body {
+#wrapper section article div.content .body {
   width: 600px;
   height: auto;
   margin-left: auto;
   margin-right: auto;
 }
 
-#wrapper section article div.content #body img,
-#wrapper section article div.content #body iframe,
-#wrapper section article div.content #body object,
-#wrapper section article div.content #body video,
-#wrapper section article div.content #body embed {
+#wrapper section article div.content .body img,
+#wrapper section article div.content .body iframe,
+#wrapper section article div.content .body object,
+#wrapper section article div.content .body video,
+#wrapper section article div.content .body embed {
   width: 600px;
   float: left;
   margin-bottom: 30px;
 }
 
-#wrapper section article div.content #body p,
-#wrapper section article div.content #body blockquote,
-#wrapper section article div.content #body pre {
+#wrapper section article div.content .body p,
+#wrapper section article div.content .body blockquote,
+#wrapper section article div.content .body pre {
   line-height: 28px;
   word-wrap: break-word;
   margin-top: 0px;
   margin-bottom: 30px;
 }
 
-#wrapper section article div.content #body pre {
+#wrapper section article div.content .body pre {
   line-height: normal;
   background-color: #f6f6f6;
   padding-top: 20px;
@@ -358,7 +358,7 @@ a:hover {
   padding-left: 38px;
 }
 
-#wrapper section article div.content #body blockquote {
+#wrapper section article div.content .body blockquote {
   padding-left: 15px;
   margin-left: 15px;
   border-left: #e5e5e5 3px solid;
@@ -366,48 +366,48 @@ a:hover {
   float: left;
 }
 
-#wrapper section article div.content #body blockquote p {
+#wrapper section article div.content .body blockquote p {
   width: 562px;
   margin-top: 0px;
   margin-bottom: 0px;
 }
 
-#wrapper section article div.content #body p.introduction {
+#wrapper section article div.content .body p.introduction {
   font-style: italic;
 }
 
-#wrapper section article div.content #body p {
+#wrapper section article div.content .body p {
   width: 600px;
 }
 
-#wrapper section article div.content #body p:last-child {
+#wrapper section article div.content .body p:last-child {
   margin-bottom: 0px;
 }
 
-#wrapper section article div.content #body p img {
+#wrapper section article div.content .body p img {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
 
-#wrapper section article div.content #body p img,
-#wrapper section article div.content #body p iframe,
-#wrapper section article div.content #body p object,
-#wrapper section article div.content #body p video,
-#wrapper section article div.content #body p embed {
+#wrapper section article div.content .body p img,
+#wrapper section article div.content .body p iframe,
+#wrapper section article div.content .body p object,
+#wrapper section article div.content .body p video,
+#wrapper section article div.content .body p embed {
   max-width: 600px;
   margin-bottom: 0px;
 }
 
-#wrapper section article div.content #body p img:last-child,
-#wrapper section article div.content #body p iframe:last-child,
-#wrapper section article div.content #body p object:last-child,
-#wrapper section article div.content #body p video:last-child,
-#wrapper section article div.content #body p embed:last-child {
+#wrapper section article div.content .body p img:last-child,
+#wrapper section article div.content .body p iframe:last-child,
+#wrapper section article div.content .body p object:last-child,
+#wrapper section article div.content .body p video:last-child,
+#wrapper section article div.content .body p embed:last-child {
   margin-bottom: 30px;
 }
 
-#wrapper section article div.content #body p a.read-more {
+#wrapper section article div.content .body p a.read-more {
   color: #030303;
   font-size: 14px;
   font-weight: bold;
@@ -417,23 +417,23 @@ a:hover {
   -o-transition: color 0.15s cubic-bezier(0.54, 0.24, 0.35, 0.68);
 }
 
-#wrapper section article div.content #body p a.read-more:after {
+#wrapper section article div.content .body p a.read-more:after {
   content: "\2026";
 }
 
-#wrapper section article div.content #body p a.read-more:hover {
+#wrapper section article div.content .body p a.read-more:hover {
   color: #cdcdcd;
   -webkit-transition: color 0.15s cubic-bezier(0.54, 0.24, 0.35, 0.68);
   -moz-transition: color 0.15s cubic-bezier(0.54, 0.24, 0.35, 0.68);
   -o-transition: color 0.15s cubic-bezier(0.54, 0.24, 0.35, 0.68);
 }
 
-#wrapper section article div.content #body h1,
-#wrapper section article div.content #body h2,
-#wrapper section article div.content #body h3,
-#wrapper section article div.content #body h4,
-#wrapper section article div.content #body h5,
-#wrapper section article div.content #body h6 {
+#wrapper section article div.content .body h1,
+#wrapper section article div.content .body h2,
+#wrapper section article div.content .body h3,
+#wrapper section article div.content .body h4,
+#wrapper section article div.content .body h5,
+#wrapper section article div.content .body h6 {
   font-family: 'Open Sans', Helvetica, Arial, 'sans-serif';
   font-weight: 800;
   text-transform: uppercase;
@@ -442,77 +442,77 @@ a:hover {
   margin-bottom: 25px;
 }
 
-#wrapper section article div.content #body h1 {
+#wrapper section article div.content .body h1 {
   font-size: 28px;
 }
 
-#wrapper section article div.content #body h2 {
+#wrapper section article div.content .body h2 {
   font-size: 25px;
 }
 
-#wrapper section article div.content #body h3 {
+#wrapper section article div.content .body h3 {
   font-size: 20px;
   letter-spacing: normal;
 }
 
-#wrapper section article div.content #body h4 {
+#wrapper section article div.content .body h4 {
   font-size: 18px;
   letter-spacing: normal;
 }
 
-#wrapper section article div.content #body h5 {
+#wrapper section article div.content .body h5 {
   font-size: 15px;
   letter-spacing: normal;
 }
 
-#wrapper section article div.content #body h6 {
+#wrapper section article div.content .body h6 {
   font-size: 12px;
   letter-spacing: normal;
 }
 
-#wrapper section article div.content #body hr {
+#wrapper section article div.content .body hr {
   border-top: #e5e5e5 1px solid;
   margin-bottom: 30px;
 }
 
-#wrapper section article div.content #body ul {
+#wrapper section article div.content .body ul {
   display: block;
   list-style-type: disc;
   padding-left: 56px;
   margin-bottom: 30px;
 }
 
-#wrapper section article div.content #body ul li {
+#wrapper section article div.content .body ul li {
   display: list-item;
   list-style-type: disc;
 }
 
-#wrapper section article div.content #body div.footnotes {
+#wrapper section article div.content .body div.footnotes {
   margin-top: 30px;
 }
 
-#wrapper section article div.content #body div.footnotes p {
+#wrapper section article div.content .body div.footnotes p {
   font-size: 12px;
 }
 
-#wrapper section article div.content #body dl dt {
+#wrapper section article div.content .body dl dt {
   font-weight: bold;
 }
 
-#wrapper section article div.content #body dl dd {
+#wrapper section article div.content .body dl dd {
   margin-left: 30px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-#wrapper section article div.content #body ol {
+#wrapper section article div.content .body ol {
   display: block;
   list-style-type: decimal;
   padding-left: 56px;
   margin-bottom: 30px;
 }
 
-#wrapper section article div.content #body ol li {
+#wrapper section article div.content .body ol li {
   display: list-item;
 }
 

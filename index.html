@@ -10,7 +10,7 @@ title: huehue
         <div class="date">{{post.date | date_to_string}}<br />—</div>
         <h1><a href="{{post.url}}">{{post.title}}</a></h1>
       </div>
-      <div id="body">
+      <div class="body">
         {{ post.content | split:'<!--break-->' | first }}
         {% if post.content contains '<!--break-->' %}
           <a href="{{ post.url }}">read more</a>
