@@ -13,7 +13,7 @@ In shared area:
 ```coffeescript
 throwError = (error, reason, details) ->
   error = new Meteor.Error error, reason, details
-  if Meteor.isClient then error else thhrow error
+  if Meteor.isClient then error else throw error
   # return an Meteor.Error on client instead of throw
   # will prevent from error message in the console
 ```
