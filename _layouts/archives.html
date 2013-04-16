@@ -1,0 +1,15 @@
+---
+layout: default
+title: Archives
+---
+<section id="archives">
+  <h1>{{ page.title }}</h1>
+  {% for month in page.months %}
+    <h2>{{ month | date:"%B" }} <small>{{ month | date:"%Y" }}</small></h2>
+    <ul>
+    {% for post in page.posts_by_month[month] %}
+      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+    </ul>
+  {% endfor %}
+</section>

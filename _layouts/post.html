@@ -15,7 +15,7 @@ layout: default
       <div class="info">
         <span>
           {% for tag in page.tags %}
-            {{tag}}
+            <a href="/tag/{{tag}}.html">{{tag}}</a>
           {% endfor %}
         </span>
       </div>

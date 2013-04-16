@@ -1,7 +1,7 @@
 permalink: /:title.html
 
-# Disables custom plugins.
-safe: true
+# # Disables custom plugins.
+# safe: true
 
 # Enables or disables Jekyll from recreating the site when files are modified.
 auto: true
@@ -21,3 +21,6 @@ description: "Every event is inevitable - if it wasn't, it wouldn't happen"
 author: england
 twitter: https://twitter.com/englandpost
 github: https://github.com/england
+
+tag_page_layout: tag_page
+tag_page_dir: tag
