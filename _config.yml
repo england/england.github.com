@@ -6,7 +6,7 @@ permalink: /:title.html
 # Enables or disables Jekyll from recreating the site when files are modified.
 auto: true
 
-exclude: [README.md, Gemfile, Gemfile.lock, .ruby-version]
+exclude: [README.md, Gemfile, Gemfile.lock, .ruby-version, publish.sh]
 
 
 # Publishes posts with a future date
