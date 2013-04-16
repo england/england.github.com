@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title>takidashi</title>
+    <meta name="description" content="Every event is inevitable - if it wasn't, it wouldn't happen">
+    <meta name="viewport" content="width=device-width">
+
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/pygments.css">
+    <link rel="alternate" type="application/atom+xml"  href="http://feeds.feedburner.com/takidashi" title="Takidashi">
+
+    <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
+  </head>
+  <body lang="en">
+    <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+    <div id="wrapper">
+      <section id="head">
+        <header>
+          <div id="head-container">
+            <div id="description">
+              <h3>Every event is inevitable - if it wasn't, it wouldn't happen</h3>
+            </div>
+            <nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="https://twitter.com/englandpost">Twitter</a></li>
+    <li><a href="https://github.com/england">Github</a></li>
+    <li><a href="/archive.html">Archive</a></li>
+    <li><a href="/atom.xml">Feed</a></li>
+  </ul>
+</nav>
+
+          </div>
+        </header>
+      </section>
+
+      <section>
+        
+  <article class="index">
+    <div class="content">
+      <div class="title">
+        <div class="date">10 Feb 2013<br />—</div>
+        <h1><a href="/smooth-error-handling-for-meteor-methods.html">Smooth error handling for Meteor.methods</a></h1>
+      </div>
+      <div class="body">
+        <p>The same code can handle exceptions on the client and on the server, such as validation or access rights.</p>
+
+<p>In shared area:</p>
+<div class="highlight"><pre><code class="coffeescript"><span class="nv">throwError = </span><span class="nf">(error, reason, details) -&gt;</span>
+  <span class="nv">error = </span><span class="k">new</span> <span class="nx">Meteor</span><span class="p">.</span><span class="nb">Error</span> <span class="nx">error</span><span class="p">,</span> <span class="nx">reason</span><span class="p">,</span> <span class="nx">details</span>
+  <span class="k">if</span> <span class="nx">Meteor</span><span class="p">.</span><span class="nx">isClient</span> <span class="k">then</span> <span class="nx">error</span> <span class="k">else</span> <span class="k">throw</span> <span class="nx">error</span>
+  <span class="c1"># return an Meteor.Error on client instead of throw</span>
+  <span class="c1"># will prevent from error message in the console</span>
+</code></pre></div>
+<p>Some method:</p>
+<div class="highlight"><pre><code class="coffeescript"><span class="nx">Meteor</span><span class="p">.</span><span class="nx">methods</span>
+  <span class="nv">createPost: </span><span class="nf">(text) -&gt;</span>
+    <span class="k">unless</span> <span class="nx">@userId</span>
+      <span class="k">return</span> <span class="nx">throwError</span> <span class="mi">403</span><span class="p">,</span> <span class="s">&#39;Must be logged in&#39;</span>
+    <span class="p">...</span>
+</code></pre></div>
+<p>Now on client side:</p>
+<div class="highlight"><pre><code class="coffeescript"><span class="nx">Template</span><span class="p">.</span><span class="nx">new_post</span><span class="p">.</span><span class="nx">events</span>
+  <span class="s">&#39;click input#create_post&#39;</span><span class="o">:</span> <span class="nf">(event, template) -&gt;</span>
+    <span class="nv">text = </span><span class="p">(</span><span class="nx">$</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">prev</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span>
+    <span class="nx">Meteor</span><span class="p">.</span><span class="nx">call</span> <span class="s">&#39;createPost&#39;</span><span class="p">,</span> <span class="nx">text</span><span class="p">,</span> <span class="nf">(error, result) -&gt;</span>
+      <span class="k">if</span> <span class="nx">error</span>
+        <span class="k">new</span> <span class="nx">Message</span> <span class="nx">error</span><span class="p">.</span><span class="nx">reason</span> <span class="c1"># it can be custom</span>
+          <span class="c1"># reactive client collection for work with</span>
+          <span class="c1"># client messages</span>
+</code></pre></div>
+        
+      </div>
+    </div>
+  </article>
+
+  <article class="index">
+    <div class="content">
+      <div class="title">
+        <div class="date">28 Jan 2013<br />—</div>
+        <h1><a href="/ajax-like-autocomplete-for-meteor-bootstrap.html">Ajax' like autocomplete for Meteor & Bootstrap</a></h1>
+      </div>
+      <div class="body">
+        <p>Straightforward solution for populate <a href="http://twitter.github.com/bootstrap/javascript.html#typeahead">Twitter Bootstrap typeahead</a> source data in <a href="http://meteor.com/">Meteor</a>.</p>
+
+<p>On client side:</p>
+<div class="highlight"><pre><code class="coffeescript"><span class="nv">Template.items.rendered = </span><span class="nf">-&gt;</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s">&#39;input#item&#39;</span><span class="p">).</span><span class="nx">typeahead</span>
+    <span class="nv">source: </span><span class="nf">(query, process) -&gt;</span>
+      <span class="nv">subscription = </span><span class="nx">Meteor</span><span class="p">.</span><span class="nx">subscribe</span> <span class="s">&#39;autocompleteItems&#39;</span><span class="p">,</span> <span class="nx">query</span><span class="p">,</span> <span class="nf">-&gt;</span>
+        <span class="nx">process</span> <span class="nx">_</span><span class="p">(</span><span class="nx">Items</span><span class="p">.</span><span class="nx">find</span><span class="p">().</span><span class="nx">fetch</span><span class="p">()).</span><span class="nx">pluck</span><span class="p">(</span><span class="s">&#39;name&#39;</span><span class="p">)</span>
+      <span class="nx">subscription</span><span class="p">.</span><span class="nx">stop</span><span class="p">()</span> <span class="c1"># here may be a bit different logic,</span>
+      <span class="c1"># such as keeping all opened subsriptions until autocomplete</span>
+      <span class="c1"># will be successfully completed and so on</span>
+    <span class="nv">items: </span><span class="mi">5</span>
+</code></pre></div>
+<p>On server side:</p>
+<div class="highlight"><pre><code class="coffeescript"><span class="nx">Meteor</span><span class="p">.</span><span class="nx">publish</span> <span class="s">&#39;autocompleteItems&#39;</span><span class="p">,</span> <span class="nf">(query) -&gt;</span>
+  <span class="nx">Items</span><span class="p">.</span><span class="nx">find</span>
+    <span class="nv">name: </span><span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">query</span><span class="p">,</span> <span class="s">&#39;i&#39;</span><span class="p">),</span>
+      <span class="nv">fields: </span><span class="p">{</span> <span class="nv">name: </span><span class="mi">1</span> <span class="p">},</span>
+      <span class="nv">limit: </span><span class="mi">5</span>
+</code></pre></div>
+        
+      </div>
+    </div>
+  </article>
+
+
+      </section>
+
+      <section id="foot">
+        <footer>
+          <p id="huehue">(╯°□°)╯︵ ┻━┻</p>
+        </footer>
+      </section>
+
+    </div>
+
+    <!-- Return To Top Button -->
+    <a id="return-button">
+      <img src="/images/return-button.png" width="33" height="32" alt="Return button" />
+    </a>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+
+    <script src="/js/plugins.js"></script>
+    <script src="/js/main.js"></script>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38046221-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>
