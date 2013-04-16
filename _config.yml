@@ -3,10 +3,10 @@ permalink: /:title.html
 # # Disables custom plugins.
 # safe: true
 
-# # Enables or disables Jekyll from recreating the site when files are modified.
-# auto: true
+# Enables or disables Jekyll from recreating the site when files are modified.
+auto: true
 
-exclude: [README.md, Gemfile, Gemfile.lock]
+exclude: [README.md, Gemfile, Gemfile.lock, .ruby-version]
 
 
 # Publishes posts with a future date
