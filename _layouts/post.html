@@ -20,5 +20,9 @@ layout: default
         </span>
       </div>
     </div>
+    {% if site.comments and (page.comments or page.comments == null) %}
+      {% include comments.html %}
+    {% endif %}
   </div>
 </article>
+
