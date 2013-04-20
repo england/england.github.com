@@ -8,13 +8,10 @@ title: huehue
     <div class="content">
       <div class="title">
         <div class="date">{{post.date | date_to_string}}<br />—</div>
-        <h1><a href="{{post.url}}">{{post.title}}</a></h1>
+        <h1><a href="{{post.url}}#article">{{post.title}}</a></h1>
       </div>
       <div class="body">
-        {{ post.content | split:'<!--break-->' | first }}
-        {% if post.content contains '<!--break-->' %}
-          <a href="{{ post.url }}">read more</a>
-        {% endif %}
+        {{ post.content | postmorefilter: post.url, "Read more" }}
       </div>
       <div class="meta">
         <div class="info">

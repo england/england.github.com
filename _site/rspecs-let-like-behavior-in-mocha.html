@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title>takidashi</title>
+    <meta name="description" content="Every event is inevitable - if it wasn't, it wouldn't happen">
+    <meta name="viewport" content="width=device-width">
+
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/pygments.css">
+    <link rel="alternate" type="application/atom+xml"  href="http://feeds.feedburner.com/takidashi" title="Takidashi">
+
+    <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
+  </head>
+  <body lang="en">
+    <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+    <div id="wrapper">
+      <section id="head">
+        <header>
+          <div id="head-container">
+            <div id="description">
+              <h3>Every event is inevitable - if it wasn't, it wouldn't happen</h3>
+            </div>
+            <nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="https://twitter.com/englandpost">Twitter</a></li>
+    <li><a href="https://github.com/england">Github</a></li>
+    <li><a href="/archive.html">Archive</a></li>
+    <li><a href="/atom.xml">Feed</a></li>
+  </ul>
+</nav>
+
+          </div>
+        </header>
+      </section>
+
+      <section>
+        <article class="post">
+  <div class="content">
+    <div class="title">
+      <div class="date">20 Apr 2013<br />—</div>
+      <h1><a href="" name="article">Rspec's let like behavior in Mocha</a></h1>
+    </div>
+    <div class="body">
+      <p>The cleanest way to test method in <a href="https://www.relishapp.com/rspec">Rspec</a> is declare method
+result in subject and pass different arguments from sub-contexts through
+<a href="https://www.relishapp.com/rspec/rspec-core/v/2-13/docs/helper-methods/let-and-let">let</a>.</p>
+
+<p>Some dummy ruby class:</p>
+<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">Animal</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">kind</span><span class="p">)</span>
+    <span class="vi">@kind</span> <span class="o">=</span> <span class="n">kind</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">voice</span>
+    <span class="k">case</span> <span class="vi">@kind</span>
+    <span class="k">when</span> <span class="ss">:cow</span>  <span class="k">then</span> <span class="s1">&#39;moo&#39;</span>
+    <span class="k">when</span> <span class="ss">:cat</span>  <span class="k">then</span> <span class="s1">&#39;meow&#39;</span>
+    <span class="k">when</span> <span class="ss">:fish</span>
+      <span class="k">raise</span> <span class="no">StandardError</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;fish voice cant be heared&#39;</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>Can be tested with various arguments without duplication:</p>
+<div class="highlight"><pre><code class="ruby"><span class="n">describe</span> <span class="no">Animal</span> <span class="k">do</span>
+  <span class="n">subject</span> <span class="p">{</span> <span class="no">Animal</span><span class="o">.</span><span class="n">new</span> <span class="n">kind</span> <span class="p">}</span>
+
+  <span class="n">context</span> <span class="s1">&#39;kind of cow&#39;</span> <span class="k">do</span>
+    <span class="n">let</span><span class="p">(</span><span class="ss">:kind</span><span class="p">)</span> <span class="p">{</span> <span class="ss">:cow</span> <span class="p">}</span>
+    <span class="n">its</span><span class="p">(</span><span class="ss">:voice</span><span class="p">)</span> <span class="p">{</span> <span class="n">should</span> <span class="n">eq</span> <span class="s1">&#39;moo&#39;</span> <span class="p">}</span>
+  <span class="k">end</span>
+
+  <span class="n">context</span> <span class="s1">&#39;kind of cat&#39;</span> <span class="k">do</span>
+    <span class="n">let</span><span class="p">(</span><span class="ss">:kind</span><span class="p">)</span> <span class="p">{</span> <span class="ss">:cat</span> <span class="p">}</span>
+    <span class="n">its</span><span class="p">(</span><span class="ss">:voice</span><span class="p">)</span> <span class="p">{</span> <span class="n">should</span> <span class="n">eq</span> <span class="s1">&#39;meow&#39;</span> <span class="p">}</span>
+  <span class="k">end</span>
+
+  <span class="n">context</span> <span class="s1">&#39;kind of fish&#39;</span> <span class="k">do</span>
+    <span class="n">let</span><span class="p">(</span><span class="ss">:kind</span><span class="p">)</span> <span class="p">{</span> <span class="ss">:fish</span> <span class="p">}</span>
+    <span class="n">it</span> <span class="s1">&#39;voice cant be heared&#39;</span> <span class="k">do</span>
+      <span class="n">expect</span> <span class="p">{</span> <span class="n">subject</span><span class="o">.</span><span class="n">voice</span> <span class="p">}</span>
+        <span class="o">.</span><span class="n">to</span> <span class="n">raise_error</span> <span class="s1">&#39;fish voice cant be heared&#39;</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>Test output:</p>
+<div class="highlight"><pre><code class="text">Animal
+  kind of cow
+    voice
+      should eq &quot;moo&quot;
+  kind of cat
+    voice
+      should eq &quot;meow&quot;
+  kind of fish
+    voice cant be heared
+</code></pre></div>
+<p>What about such possibility in <a href="http://visionmedia.github.io/mocha/">Mocha</a>?</p>
+
+<span name="more" id="more"></span>
+
+<p>Its possible.</p>
+
+<p>Same dummy class in coffeescript:</p>
+<div class="highlight"><pre><code class="coffeescript"><span class="k">class</span> <span class="nx">Animal</span>
+  <span class="nv">constructor: </span><span class="nf">(@kind) -&gt;</span>
+    <span class="nv">voice: </span><span class="nf">-&gt;</span>
+      <span class="k">switch</span> <span class="nx">@kind</span>
+        <span class="k">when</span> <span class="s">&#39;cow&#39;</span>  <span class="k">then</span> <span class="s">&#39;moo&#39;</span>
+        <span class="k">when</span> <span class="s">&#39;cat&#39;</span>  <span class="k">then</span> <span class="s">&#39;meow&#39;</span>
+        <span class="k">when</span> <span class="s">&#39;fish&#39;</span>
+          <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span> <span class="s">&#39;fish voice cant be heared&#39;</span>
+</code></pre></div>
+<p>NOTE: You have to be carefult with <code>-&gt; / =&gt;</code> and variables in nested contexts
+and functions.</p>
+<div class="highlight"><pre><code class="coffeescript"><span class="nx">describe</span> <span class="s">&#39;Animal&#39;</span><span class="p">,</span> <span class="nf">-&gt;</span>
+  <span class="nx">beforeEach</span> <span class="nf">-&gt;</span> <span class="vi">@animal = </span><span class="k">new</span> <span class="nx">Animal</span> <span class="nx">@kind</span>
+
+    <span class="nx">context</span> <span class="s">&#39;kind of cow&#39;</span><span class="p">,</span> <span class="nf">-&gt;</span>
+      <span class="nx">before</span> <span class="nf">-&gt;</span> <span class="vi">@kind = </span><span class="s">&#39;cow&#39;</span>
+      <span class="nx">it</span> <span class="s">&#39;voice should eq &quot;moo&quot;&#39;</span><span class="p">,</span> <span class="nf">-&gt;</span>
+        <span class="nx">@animal</span><span class="p">.</span><span class="nx">voice</span><span class="p">().</span><span class="nx">should</span><span class="p">.</span><span class="nx">eq</span> <span class="s">&#39;moo&#39;</span>
+
+    <span class="nx">context</span> <span class="s">&#39;kind of cat&#39;</span><span class="p">,</span> <span class="nf">-&gt;</span>
+      <span class="nx">before</span> <span class="nf">-&gt;</span> <span class="vi">@kind = </span><span class="s">&#39;cat&#39;</span>
+      <span class="nx">it</span> <span class="s">&#39;voice should eq &quot;meow&quot;&#39;</span><span class="p">,</span> <span class="nf">-&gt;</span>
+        <span class="nx">@animal</span><span class="p">.</span><span class="nx">voice</span><span class="p">().</span><span class="nx">should</span><span class="p">.</span><span class="nx">eq</span> <span class="s">&#39;meow&#39;</span>
+
+    <span class="nx">context</span> <span class="s">&#39;kind of fish&#39;</span><span class="p">,</span> <span class="nf">-&gt;</span>
+      <span class="nx">before</span> <span class="nf">-&gt;</span> <span class="vi">@kind = </span><span class="s">&#39;fish&#39;</span>
+      <span class="nx">it</span> <span class="s">&#39;voice cant be heared&#39;</span><span class="p">,</span> <span class="nf">-&gt;</span>
+        <span class="p">(</span><span class="o">=&gt;</span> <span class="nx">@animal</span><span class="p">.</span><span class="nx">voice</span><span class="p">()).</span><span class="nx">should</span><span class="p">.</span><span class="nx">throw</span> <span class="s">&#39;fish voice cant be heared&#39;</span>
+</code></pre></div>
+<p>It reproduces almost the same result:</p>
+<div class="highlight"><pre><code class="text">Animal
+  kind of cow
+    ✓ voice should eq &quot;moo&quot;
+  kind of cat
+    ✓ voice should eq &quot;meow&quot;
+  kind of fish
+    ✓ voice cant be heared
+</code></pre></div>
+    </div>
+    <div class="meta">
+      <div class="info">
+        <span>
+          
+            <a href="/tag/rspec.html">rspec</a>
+          
+            <a href="/tag/mocha.html">mocha</a>
+          
+            <a href="/tag/ruby.html">ruby</a>
+          
+            <a href="/tag/coffeescript.html">coffeescript</a>
+          
+        </span>
+      </div>
+    </div>
+    <br /> <!-- lol, br :D -->
+    
+      <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'takidashi';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+  </div>
+</article>
+
+
+      </section>
+
+      <section id="foot">
+        <footer>
+          <p id="huehue">(╯°□°)╯︵ ┻━┻</p>
+        </footer>
+      </section>
+
+    </div>
+
+    <!-- Return To Top Button -->
+    <a id="return-button">
+      <img src="/images/return-button.png" width="33" height="32" alt="Return button" />
+    </a>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+
+    <script src="/js/plugins.js"></script>
+    <script src="/js/main.js"></script>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38046221-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>

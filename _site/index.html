@@ -48,8 +48,91 @@
   <article class="index">
     <div class="content">
       <div class="title">
+        <div class="date">20 Apr 2013<br />—</div>
+        <h1><a href="/rspecs-let-like-behavior-in-mocha.html#article">Rspec's let like behavior in Mocha</a></h1>
+      </div>
+      <div class="body">
+        <p>The cleanest way to test method in <a href="https://www.relishapp.com/rspec">Rspec</a> is declare method
+result in subject and pass different arguments from sub-contexts through
+<a href="https://www.relishapp.com/rspec/rspec-core/v/2-13/docs/helper-methods/let-and-let">let</a>.</p>
+
+<p>Some dummy ruby class:</p>
+<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">Animal</span>
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">kind</span><span class="p">)</span>
+    <span class="vi">@kind</span> <span class="o">=</span> <span class="n">kind</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">voice</span>
+    <span class="k">case</span> <span class="vi">@kind</span>
+    <span class="k">when</span> <span class="ss">:cow</span>  <span class="k">then</span> <span class="s1">&#39;moo&#39;</span>
+    <span class="k">when</span> <span class="ss">:cat</span>  <span class="k">then</span> <span class="s1">&#39;meow&#39;</span>
+    <span class="k">when</span> <span class="ss">:fish</span>
+      <span class="k">raise</span> <span class="no">StandardError</span><span class="o">.</span><span class="n">new</span> <span class="s1">&#39;fish voice cant be heared&#39;</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>Can be tested with various arguments without duplication:</p>
+<div class="highlight"><pre><code class="ruby"><span class="n">describe</span> <span class="no">Animal</span> <span class="k">do</span>
+  <span class="n">subject</span> <span class="p">{</span> <span class="no">Animal</span><span class="o">.</span><span class="n">new</span> <span class="n">kind</span> <span class="p">}</span>
+
+  <span class="n">context</span> <span class="s1">&#39;kind of cow&#39;</span> <span class="k">do</span>
+    <span class="n">let</span><span class="p">(</span><span class="ss">:kind</span><span class="p">)</span> <span class="p">{</span> <span class="ss">:cow</span> <span class="p">}</span>
+    <span class="n">its</span><span class="p">(</span><span class="ss">:voice</span><span class="p">)</span> <span class="p">{</span> <span class="n">should</span> <span class="n">eq</span> <span class="s1">&#39;moo&#39;</span> <span class="p">}</span>
+  <span class="k">end</span>
+
+  <span class="n">context</span> <span class="s1">&#39;kind of cat&#39;</span> <span class="k">do</span>
+    <span class="n">let</span><span class="p">(</span><span class="ss">:kind</span><span class="p">)</span> <span class="p">{</span> <span class="ss">:cat</span> <span class="p">}</span>
+    <span class="n">its</span><span class="p">(</span><span class="ss">:voice</span><span class="p">)</span> <span class="p">{</span> <span class="n">should</span> <span class="n">eq</span> <span class="s1">&#39;meow&#39;</span> <span class="p">}</span>
+  <span class="k">end</span>
+
+  <span class="n">context</span> <span class="s1">&#39;kind of fish&#39;</span> <span class="k">do</span>
+    <span class="n">let</span><span class="p">(</span><span class="ss">:kind</span><span class="p">)</span> <span class="p">{</span> <span class="ss">:fish</span> <span class="p">}</span>
+    <span class="n">it</span> <span class="s1">&#39;voice cant be heared&#39;</span> <span class="k">do</span>
+      <span class="n">expect</span> <span class="p">{</span> <span class="n">subject</span><span class="o">.</span><span class="n">voice</span> <span class="p">}</span>
+        <span class="o">.</span><span class="n">to</span> <span class="n">raise_error</span> <span class="s1">&#39;fish voice cant be heared&#39;</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>Test output:</p>
+<div class="highlight"><pre><code class="text">Animal
+  kind of cow
+    voice
+      should eq &quot;moo&quot;
+  kind of cat
+    voice
+      should eq &quot;meow&quot;
+  kind of fish
+    voice cant be heared
+</code></pre></div>
+<p>What about such possibility in <a href="http://visionmedia.github.io/mocha/">Mocha</a>?</p>
+
+<p class='more'><a href='/rspecs-let-like-behavior-in-mocha.html#more'>Read more</a></p>
+      </div>
+      <div class="meta">
+        <div class="info">
+          <span>
+            
+              <a href="/tag/rspec.html">rspec</a>
+            
+              <a href="/tag/mocha.html">mocha</a>
+            
+              <a href="/tag/ruby.html">ruby</a>
+            
+              <a href="/tag/coffeescript.html">coffeescript</a>
+            
+          </span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="index">
+    <div class="content">
+      <div class="title">
         <div class="date">10 Feb 2013<br />—</div>
-        <h1><a href="/smooth-error-handling-for-meteor-methods.html">Smooth error handling for Meteor.methods</a></h1>
+        <h1><a href="/smooth-error-handling-for-meteor-methods.html#article">Smooth error handling for Meteor.methods</a></h1>
       </div>
       <div class="body">
         <p>The same code can handle exceptions on the client and on the server, such as validation or access rights.</p>
@@ -78,7 +161,6 @@
           <span class="c1"># reactive client collection for work with</span>
           <span class="c1"># client messages</span>
 </code></pre></div>
-        
       </div>
       <div class="meta">
         <div class="info">
@@ -96,7 +178,7 @@
     <div class="content">
       <div class="title">
         <div class="date">28 Jan 2013<br />—</div>
-        <h1><a href="/ajax-like-autocomplete-for-meteor-bootstrap.html">Ajax' like autocomplete for Meteor & Bootstrap</a></h1>
+        <h1><a href="/ajax-like-autocomplete-for-meteor-bootstrap.html#article">Ajax' like autocomplete for Meteor & Bootstrap</a></h1>
       </div>
       <div class="body">
         <p>Straightforward solution for populate <a href="http://twitter.github.com/bootstrap/javascript.html#typeahead">Twitter Bootstrap typeahead</a> source data in <a href="http://meteor.com/">Meteor</a>.</p>
@@ -119,7 +201,6 @@
       <span class="nv">fields: </span><span class="p">{</span> <span class="nv">name: </span><span class="mi">1</span> <span class="p">},</span>
       <span class="nv">limit: </span><span class="mi">5</span>
 </code></pre></div>
-        
       </div>
       <div class="meta">
         <div class="info">

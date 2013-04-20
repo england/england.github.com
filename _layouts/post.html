@@ -6,10 +6,10 @@ layout: default
   <div class="content">
     <div class="title">
       <div class="date">{{page.date | date_to_string}}<br />—</div>
-      <h1><a href="{{post.url}}">{{page.title}}</a></h1>
+      <h1><a href="{{post.url}}" name="article">{{page.title}}</a></h1>
     </div>
     <div class="body">
-      {{ content }}
+      {{ content | mark_excerpt }}
     </div>
     <div class="meta">
       <div class="info">
@@ -20,6 +20,7 @@ layout: default
         </span>
       </div>
     </div>
+    <br /> <!-- lol, br :D -->
     {% if site.comments and (page.comments or page.comments == null) %}
       {% include comments.html %}
     {% endif %}
