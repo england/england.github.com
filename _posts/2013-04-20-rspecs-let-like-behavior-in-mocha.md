@@ -4,6 +4,7 @@ date: 2013-04-20
 title: Rspec's let like behavior in Mocha
 tags: [rspec, mocha, ruby, coffeescript]
 category: programming
+description: about hacks in mocha
 ---
 
 The cleanest way to test method in [Rspec][rspec] is declare method
