@@ -62,21 +62,21 @@
       <p>The same code can handle exceptions on the client and on the server, such as validation or access rights.</p>
 
 <p>In shared area:</p>
-<div class="highlight"><pre><code class="coffeescript"><span class="nv">throwError = </span><span class="nf">(error, reason, details) -&gt;</span>
+<div class="highlight"><pre><code class="coffeescript language-coffeescript" data-lang="coffeescript"><span class="nv">throwError = </span><span class="nf">(error, reason, details) -&gt;</span>
   <span class="nv">error = </span><span class="k">new</span> <span class="nx">Meteor</span><span class="p">.</span><span class="nb">Error</span> <span class="nx">error</span><span class="p">,</span> <span class="nx">reason</span><span class="p">,</span> <span class="nx">details</span>
   <span class="k">if</span> <span class="nx">Meteor</span><span class="p">.</span><span class="nx">isClient</span> <span class="k">then</span> <span class="nx">error</span> <span class="k">else</span> <span class="k">throw</span> <span class="nx">error</span>
   <span class="c1"># return an Meteor.Error on client instead of throw</span>
   <span class="c1"># will prevent from error message in the console</span>
 </code></pre></div>
 <p>Some method:</p>
-<div class="highlight"><pre><code class="coffeescript"><span class="nx">Meteor</span><span class="p">.</span><span class="nx">methods</span>
+<div class="highlight"><pre><code class="coffeescript language-coffeescript" data-lang="coffeescript"><span class="nx">Meteor</span><span class="p">.</span><span class="nx">methods</span>
   <span class="nv">createPost: </span><span class="nf">(text) -&gt;</span>
     <span class="k">unless</span> <span class="nx">@userId</span>
       <span class="k">return</span> <span class="nx">throwError</span> <span class="mi">403</span><span class="p">,</span> <span class="s">&#39;Must be logged in&#39;</span>
     <span class="p">...</span>
 </code></pre></div>
 <p>Now on client side:</p>
-<div class="highlight"><pre><code class="coffeescript"><span class="nx">Template</span><span class="p">.</span><span class="nx">new_post</span><span class="p">.</span><span class="nx">events</span>
+<div class="highlight"><pre><code class="coffeescript language-coffeescript" data-lang="coffeescript"><span class="nx">Template</span><span class="p">.</span><span class="nx">new_post</span><span class="p">.</span><span class="nx">events</span>
   <span class="s">&#39;click input#create_post&#39;</span><span class="o">:</span> <span class="nf">(event, template) -&gt;</span>
     <span class="nv">text = </span><span class="p">(</span><span class="nx">$</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">prev</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span>
     <span class="nx">Meteor</span><span class="p">.</span><span class="nx">call</span> <span class="s">&#39;createPost&#39;</span><span class="p">,</span> <span class="nx">text</span><span class="p">,</span> <span class="nf">(error, result) -&gt;</span>
