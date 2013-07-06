@@ -65,7 +65,7 @@ result in subject and pass different arguments from sub-contexts through
 <a href="https://www.relishapp.com/rspec/rspec-core/v/2-13/docs/helper-methods/let-and-let">let</a>.</p>
 
 <p>Some dummy ruby class:</p>
-<div class="highlight"><pre><code class="ruby"><span class="k">class</span> <span class="nc">Animal</span>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Animal</span>
   <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">kind</span><span class="p">)</span>
     <span class="vi">@kind</span> <span class="o">=</span> <span class="n">kind</span>
   <span class="k">end</span>
@@ -81,7 +81,7 @@ result in subject and pass different arguments from sub-contexts through
 <span class="k">end</span>
 </code></pre></div>
 <p>Can be tested with various arguments without duplication:</p>
-<div class="highlight"><pre><code class="ruby"><span class="n">describe</span> <span class="no">Animal</span> <span class="k">do</span>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">describe</span> <span class="no">Animal</span> <span class="k">do</span>
   <span class="n">subject</span> <span class="p">{</span> <span class="no">Animal</span><span class="o">.</span><span class="n">new</span> <span class="n">kind</span> <span class="p">}</span>
 
   <span class="n">context</span> <span class="s1">&#39;kind of cow&#39;</span> <span class="k">do</span>
@@ -104,7 +104,7 @@ result in subject and pass different arguments from sub-contexts through
 <span class="k">end</span>
 </code></pre></div>
 <p>Test output:</p>
-<div class="highlight"><pre><code class="text">Animal
+<div class="highlight"><pre><code class="text language-text" data-lang="text">Animal
   kind of cow
     voice
       should eq &quot;moo&quot;
@@ -146,21 +146,21 @@ result in subject and pass different arguments from sub-contexts through
         <p>The same code can handle exceptions on the client and on the server, such as validation or access rights.</p>
 
 <p>In shared area:</p>
-<div class="highlight"><pre><code class="coffeescript"><span class="nv">throwError = </span><span class="nf">(error, reason, details) -&gt;</span>
+<div class="highlight"><pre><code class="coffeescript language-coffeescript" data-lang="coffeescript"><span class="nv">throwError = </span><span class="nf">(error, reason, details) -&gt;</span>
   <span class="nv">error = </span><span class="k">new</span> <span class="nx">Meteor</span><span class="p">.</span><span class="nb">Error</span> <span class="nx">error</span><span class="p">,</span> <span class="nx">reason</span><span class="p">,</span> <span class="nx">details</span>
   <span class="k">if</span> <span class="nx">Meteor</span><span class="p">.</span><span class="nx">isClient</span> <span class="k">then</span> <span class="nx">error</span> <span class="k">else</span> <span class="k">throw</span> <span class="nx">error</span>
   <span class="c1"># return an Meteor.Error on client instead of throw</span>
   <span class="c1"># will prevent from error message in the console</span>
 </code></pre></div>
 <p>Some method:</p>
-<div class="highlight"><pre><code class="coffeescript"><span class="nx">Meteor</span><span class="p">.</span><span class="nx">methods</span>
+<div class="highlight"><pre><code class="coffeescript language-coffeescript" data-lang="coffeescript"><span class="nx">Meteor</span><span class="p">.</span><span class="nx">methods</span>
   <span class="nv">createPost: </span><span class="nf">(text) -&gt;</span>
     <span class="k">unless</span> <span class="nx">@userId</span>
       <span class="k">return</span> <span class="nx">throwError</span> <span class="mi">403</span><span class="p">,</span> <span class="s">&#39;Must be logged in&#39;</span>
     <span class="p">...</span>
 </code></pre></div>
 <p>Now on client side:</p>
-<div class="highlight"><pre><code class="coffeescript"><span class="nx">Template</span><span class="p">.</span><span class="nx">new_post</span><span class="p">.</span><span class="nx">events</span>
+<div class="highlight"><pre><code class="coffeescript language-coffeescript" data-lang="coffeescript"><span class="nx">Template</span><span class="p">.</span><span class="nx">new_post</span><span class="p">.</span><span class="nx">events</span>
   <span class="s">&#39;click input#create_post&#39;</span><span class="o">:</span> <span class="nf">(event, template) -&gt;</span>
     <span class="nv">text = </span><span class="p">(</span><span class="nx">$</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">prev</span><span class="p">(</span><span class="s">&#39;input&#39;</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span>
     <span class="nx">Meteor</span><span class="p">.</span><span class="nx">call</span> <span class="s">&#39;createPost&#39;</span><span class="p">,</span> <span class="nx">text</span><span class="p">,</span> <span class="nf">(error, result) -&gt;</span>
@@ -192,7 +192,7 @@ result in subject and pass different arguments from sub-contexts through
         <p>Straightforward solution for populate <a href="http://twitter.github.com/bootstrap/javascript.html#typeahead">Twitter Bootstrap typeahead</a> source data in <a href="http://meteor.com/">Meteor</a>.</p>
 
 <p>On client side:</p>
-<div class="highlight"><pre><code class="coffeescript"><span class="nv">Template.items.rendered = </span><span class="nf">-&gt;</span>
+<div class="highlight"><pre><code class="coffeescript language-coffeescript" data-lang="coffeescript"><span class="nv">Template.items.rendered = </span><span class="nf">-&gt;</span>
   <span class="nx">$</span><span class="p">(</span><span class="s">&#39;input#item&#39;</span><span class="p">).</span><span class="nx">typeahead</span>
     <span class="nv">source: </span><span class="nf">(query, process) -&gt;</span>
       <span class="nv">subscription = </span><span class="nx">Meteor</span><span class="p">.</span><span class="nx">subscribe</span> <span class="s">&#39;autocompleteItems&#39;</span><span class="p">,</span> <span class="nx">query</span><span class="p">,</span> <span class="nf">-&gt;</span>
@@ -203,7 +203,7 @@ result in subject and pass different arguments from sub-contexts through
     <span class="nv">items: </span><span class="mi">5</span>
 </code></pre></div>
 <p>On server side:</p>
-<div class="highlight"><pre><code class="coffeescript"><span class="nx">Meteor</span><span class="p">.</span><span class="nx">publish</span> <span class="s">&#39;autocompleteItems&#39;</span><span class="p">,</span> <span class="nf">(query) -&gt;</span>
+<div class="highlight"><pre><code class="coffeescript language-coffeescript" data-lang="coffeescript"><span class="nx">Meteor</span><span class="p">.</span><span class="nx">publish</span> <span class="s">&#39;autocompleteItems&#39;</span><span class="p">,</span> <span class="nf">(query) -&gt;</span>
   <span class="nx">Items</span><span class="p">.</span><span class="nx">find</span>
     <span class="nv">name: </span><span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">query</span><span class="p">,</span> <span class="s">&#39;i&#39;</span><span class="p">),</span>
       <span class="nv">fields: </span><span class="p">{</span> <span class="nv">name: </span><span class="mi">1</span> <span class="p">},</span>

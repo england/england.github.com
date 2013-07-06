@@ -62,7 +62,7 @@
       <p>Straightforward solution for populate <a href="http://twitter.github.com/bootstrap/javascript.html#typeahead">Twitter Bootstrap typeahead</a> source data in <a href="http://meteor.com/">Meteor</a>.</p>
 
 <p>On client side:</p>
-<div class="highlight"><pre><code class="coffeescript"><span class="nv">Template.items.rendered = </span><span class="nf">-&gt;</span>
+<div class="highlight"><pre><code class="coffeescript language-coffeescript" data-lang="coffeescript"><span class="nv">Template.items.rendered = </span><span class="nf">-&gt;</span>
   <span class="nx">$</span><span class="p">(</span><span class="s">&#39;input#item&#39;</span><span class="p">).</span><span class="nx">typeahead</span>
     <span class="nv">source: </span><span class="nf">(query, process) -&gt;</span>
       <span class="nv">subscription = </span><span class="nx">Meteor</span><span class="p">.</span><span class="nx">subscribe</span> <span class="s">&#39;autocompleteItems&#39;</span><span class="p">,</span> <span class="nx">query</span><span class="p">,</span> <span class="nf">-&gt;</span>
@@ -73,7 +73,7 @@
     <span class="nv">items: </span><span class="mi">5</span>
 </code></pre></div>
 <p>On server side:</p>
-<div class="highlight"><pre><code class="coffeescript"><span class="nx">Meteor</span><span class="p">.</span><span class="nx">publish</span> <span class="s">&#39;autocompleteItems&#39;</span><span class="p">,</span> <span class="nf">(query) -&gt;</span>
+<div class="highlight"><pre><code class="coffeescript language-coffeescript" data-lang="coffeescript"><span class="nx">Meteor</span><span class="p">.</span><span class="nx">publish</span> <span class="s">&#39;autocompleteItems&#39;</span><span class="p">,</span> <span class="nf">(query) -&gt;</span>
   <span class="nx">Items</span><span class="p">.</span><span class="nx">find</span>
     <span class="nv">name: </span><span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="nx">query</span><span class="p">,</span> <span class="s">&#39;i&#39;</span><span class="p">),</span>
       <span class="nv">fields: </span><span class="p">{</span> <span class="nv">name: </span><span class="mi">1</span> <span class="p">},</span>
