@@ -5,6 +5,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - .ruby-version
+  - .gitmodules
   - publish.sh
   - jekyll_dev.sh
 
