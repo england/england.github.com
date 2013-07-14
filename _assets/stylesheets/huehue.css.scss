@@ -53,11 +53,17 @@ p a {
   padding: 15px;
 }
 
- pre {
+pre {
   padding: 10px;
   margin-bottom: 1.25em;
   line-height: 1.25;
- }
+}
+
+article {
+  ul {
+    margin-left: 20px;
+  }
+}
 
 .highlight {
   .c   { color: $color_cashmere; font-style: italic } /* Comment */

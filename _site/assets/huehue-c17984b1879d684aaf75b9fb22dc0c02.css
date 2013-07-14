@@ -4294,6 +4294,9 @@ pre {
   margin-bottom: 1.25em;
   line-height: 1.25; }
 
+article ul {
+  margin-left: 20px; }
+
 .highlight {
   /* Comment */
   /* Error */
