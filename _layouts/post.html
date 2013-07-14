@@ -1,29 +1,25 @@
 ---
 layout: default
 ---
+<article>
+  <h2><a href="{{post.url}}" name="article">{{page.title}}</a></h2>
 
-<article class="post">
-  <div class="content">
-    <div class="title">
-      <div class="date">{{page.date | date_to_string}}<br />—</div>
-      <h1><a href="{{post.url}}" name="article">{{page.title}}</a></h1>
+  <div class="row">
+    <div class="large-12 columns">
+      <h6 class="left">{{page.date | date_to_string}}</h6>
+      <ul class="tags right">
+        {% for tag in page.tags %}
+          <li><a href="/tag/{{tag}}.html">{{tag}}</a></li>
+        {% endfor %}
+      </ul>
     </div>
-    <div class="body">
-      {{ content | mark_excerpt }}
-    </div>
-    <div class="meta">
-      <div class="info">
-        <span>
-          {% for tag in page.tags %}
-            <a href="/tag/{{tag}}.html">{{tag}}</a>
-          {% endfor %}
-        </span>
-      </div>
-    </div>
-    <br /> <!-- lol, br :D -->
-    {% if site.comments and (page.comments or page.comments == null) %}
-      {% include comments.html %}
-    {% endif %}
   </div>
-</article>
 
+  {{ content | mark_excerpt }}
+
+  <br /> <!-- lol, br :D -->
+  {% if site.comments and (page.comments or page.comments == null) %}
+    {% include comments.html %}
+  {% endif %}
+
+</article>
