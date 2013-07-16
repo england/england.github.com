@@ -4,7 +4,7 @@
  <title>takidashi</title>
  <link href="http://takidashi.com/atom.xml" rel="self"/>
  <link href="http://takidashi.com.com/"/>
- <updated>2013-07-17T00:39:23+04:00</updated>
+ <updated>2013-07-17T00:42:37+04:00</updated>
  <id>http://takidashi.com/</id>
  <author>
    <name>england</name>
@@ -53,7 +53,7 @@ I was just too lazy to understand why the existing implementation &lt;a href=&qu
  </entry>
  
  <entry>
-   <title>Rspec&#39;s let like behavior in Mocha</title>
+   <title>Rspec&#39;s &quot;let&quot; like behavior in Mocha</title>
    <link href="http://takidashi.com/rspecs-let-like-behavior-in-mocha.html"/>
    <updated>2013-04-20T00:00:00+04:00</updated>
    <id>http://takidashi.com/rspecs-let-like-behavior-in-mocha</id>
