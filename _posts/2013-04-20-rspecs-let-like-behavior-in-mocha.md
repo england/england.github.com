@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2013-04-20
-title: Rspec's let like behavior in Mocha
+title: Rspec's "let" like behavior in Mocha
 tags: [rspec, mocha, ruby, coffeescript]
 category: programming
 description: about hacks in mocha
